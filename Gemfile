@@ -8,6 +8,9 @@ gem "bootstrap", "~> 5.2"
 gem "simple_form"
 gem "sassc-rails"
 
+# Devise
+gem "devise"
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
