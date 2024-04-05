@@ -1,20 +1,26 @@
 <h1>HOME PAGE</h1>
 
 <h3><%= link_to "Report a missing mascot", new_missing_animal_path %></h3>
-<h1><%= current_user.first_name %></h1>
+<% if current_user %>
+  <h1><%= current_user.first_name %></h1>
+<% end %>
 
 <div class="border p-4">
   <h1>Missing mascots:</h1>
-  <% @missing_animals.each do |missing_animal| %>
-    <h2>Name: <%= link_to missing_animal.name, missing_animal_path(missing_animal) %></h2>
-    <h6>Species: <%= missing_animal.species %></h6>
-    <h6>Age: <%= missing_animal.age %></h6>
-    <h6>Breed: <%= missing_animal.breed %></h6>
-    <h6>Lost location: <%= missing_animal.lost_location %></h6>
-    <h6>Date lost: <%= missing_animal.date_lost %></h6>
-    <h6>Sterilized: <%= missing_animal.sterilized %></h6>
-    <h6>Size: <%= missing_animal.size %></h6>
-    <h6>Color: <%= missing_animal.color %></h6>
-    <h6>Description: <%= missing_animal.description %></h6>
+  <% if @missing_animals.present? %>
+    <% @missing_animals.each do |missing_animal| %>
+      <h2>Name: <%= link_to missing_animal.name, missing_animal_path(missing_animal) %></h2>
+      <h6>Species: <%= missing_animal.species %></h6>
+      <h6>Age: <%= missing_animal.age %></h6>
+      <h6>Breed: <%= missing_animal.breed %></h6>
+      <h6>Lost location: <%= missing_animal.lost_location %></h6>
+      <h6>Date lost: <%= missing_animal.date_lost %></h6>
+      <h6>Sterilized: <%= missing_animal.sterilized %></h6>
+      <h6>Size: <%= missing_animal.size %></h6>
+      <h6>Color: <%= missing_animal.color %></h6>
+      <h6>Description: <%= missing_animal.description %></h6>
+    <% end %>
+  <% else %>
+    <p>No missing mascots to display.</p>
   <% end %>
 </div>
