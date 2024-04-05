@@ -30,6 +30,7 @@ class MissingAnimalsController < ApplicationController
 
   def destroy
     @missing_animal = MissingAnimal.find(params[:id])
+    @missing_animal.update(status: :found) if params[:found]
     if @missing_animal.destroy
       redirect_to root_path
     else
