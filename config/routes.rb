@@ -9,5 +9,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
 
-  resources :missing_animals
+  resources :missing_animals do
+    member do
+      delete :found
+    end
+  end
 end
