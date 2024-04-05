@@ -1,0 +1,16 @@
+<h1>Edit info</h1>
+
+<%= simple_form_for @missing_animal do |f| %>
+  <%= f.input :species %>
+  <%= f.input :age %>
+  <%= f.input :name %>
+  <%= f.input :breed %>
+  <%= f.input :lost_location %>
+  <%= f.input :date_lost, as: :date, start_year: Date.today.year - 5, end_year: Date.today.year %>
+  <%= f.input :sterilized %>
+  <%= f.input :size %>
+  <%= f.input :color %>
+  <%= f.input :sex %>
+  <%= f.input :description %>
+  <%= f.button :submit %>
+<% end %>
