@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :missing_animals
   validates :first_name, :last_name, :phone_number, :location, presence: true
   validates :phone_number, uniqueness: true
   validates :email, uniqueness: true
