@@ -1,5 +1,6 @@
 class MissingAnimal < ApplicationRecord
   belongs_to :user
+  has_one_attached :photo
 
   enum status: { missing: 0, found: 1 }
 

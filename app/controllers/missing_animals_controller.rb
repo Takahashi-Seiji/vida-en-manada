@@ -41,6 +41,6 @@ class MissingAnimalsController < ApplicationController
   private
 
   def missing_animal_params
-    params.require(:missing_animal).permit(:species, :age, :name, :breed, :lost_location, :date_lost, :sterilized, :size, :color, :description)
+    params.require(:missing_animal).permit(:species, :age, :name, :breed, :lost_location, :date_lost, :sterilized, :size, :color, :description, :photo)
   end
 end
