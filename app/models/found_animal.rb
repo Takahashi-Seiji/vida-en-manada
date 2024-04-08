@@ -1,4 +1,4 @@
-class MissingAnimal < ApplicationRecord
+class FoundAnimal < ApplicationRecord
   belongs_to :user
 
   enum status: { missing: 0, found: 1 }

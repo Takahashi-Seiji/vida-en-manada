@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  species: MyString
+  age: 1
+  breed: MyString
+  found_location: MyString
+  found_date: 2024-04-08
+  sterilized: false
+  size: MyString
+  color: MyString
+  sex: MyString
+  description: MyText
+
+two:
+  user: two
+  species: MyString
+  age: 1
+  breed: MyString
+  found_location: MyString
+  found_date: 2024-04-08
+  sterilized: false
+  size: MyString
+  color: MyString
+  sex: MyString
+  description: MyText

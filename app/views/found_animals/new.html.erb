@@ -1,0 +1,16 @@
+<h1>Report a found animal new</h1>
+<%= link_to "Return home", root_path %>
+<h6><%= current_user.first_name %></h6>
+
+<%= simple_form_for @found_animal do |f| %>
+  <%= f.input :species %>
+  <%= f.input :age %>
+  <%= f.input :breed %>
+  <%= f.input :found_location %>
+  <%= f.input :found_date, as: :date, start_year: Date.today.year - 5, end_year: Date.today.year %>
+  <%= f.input :sterilized %>
+  <%= f.input :size %>
+  <%= f.input :color %>
+  <%= f.input :description %>
+  <%= f.button :submit %>
+<% end %>
