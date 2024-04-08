@@ -10,10 +10,14 @@
 <%= @found_animal.size %>
 <%= @found_animal.color %>
 <%= @found_animal.description %>
+<%= @found_animal.status %>
 
 <% if @found_animal.user == current_user %>
   <h6><%= link_to "Edit", edit_found_animal_path(@found_animal) %></h6>
   <%= link_to "Delete", found_animal_path(@found_animal), data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  <%= simple_form_for(@found_animal, url: found_animal_path(@found_animal, found: true), method: :delete) do |f| %>
+    <%= f.button :submit, "Has this mascot been reunited with its owner? Click here to update its status to LOST and continue" %>
+  <% end %>
 <% end %>
 
 <h5>Reported by: <%= @user.first_name %></h5>
