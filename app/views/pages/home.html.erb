@@ -25,3 +25,20 @@
     <p>No missing mascots to display.</p>
   <% end %>
 </div>
+
+<div class="border p-4">
+  <h1>Found mascots: </h1>
+  <% if @found_animals.present? %>
+    <% @found_animals.each do |found_animal| %>
+      <h2>Species: <%= link_to found_animal.species, found_animal_path(found_animal) %></h2>
+      <h6>Age: <%= found_animal.age %></h6>
+      <h6>Breed: <%= found_animal.breed %></h6>
+      <h6>Found location: <%= found_animal.found_location %></h6>
+      <h6>Date found: <%= found_animal.found_date %></h6>
+      <h6>Sterilized: <%= found_animal.sterilized %></h6>
+      <h6>Size: <%= found_animal.size %></h6>
+      <h6>Color: <%= found_animal.color %></h6>
+      <h6>Description: <%= found_animal.description %></h6>
+    <% end %>
+  <% end %>
+</div>

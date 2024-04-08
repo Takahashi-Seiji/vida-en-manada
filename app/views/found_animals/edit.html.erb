@@ -1,6 +1,5 @@
-<h1>Report a found animal new</h1>
-<%= link_to "Return home", root_path %>
-<h6><%= current_user.first_name %></h6>
+<h1>Edit found animal info</h1>
+<%= link_to "Return to show", found_animal_path(@found_animal) %>
 
 <%= simple_form_for @found_animal do |f| %>
   <%= f.input :species %>

@@ -1,0 +1,19 @@
+<h1>SHOW FOUND ANIMAL</h1>
+<h3><%= link_to "Return home", root_path %></h3>
+
+<%= @found_animal.species %>
+<%= @found_animal.age %>
+<%= @found_animal.breed %>
+<%= @found_animal.found_location %>
+<%= @found_animal.found_date %>
+<%= @found_animal.sterilized %>
+<%= @found_animal.size %>
+<%= @found_animal.color %>
+<%= @found_animal.description %>
+
+<% if @found_animal.user == current_user %>
+  <h6><%= link_to "Edit", edit_found_animal_path(@found_animal) %></h6>
+  <%= link_to "Delete", found_animal_path(@found_animal), data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+<% end %>
+
+<h5>Reported by: <%= @user.first_name %></h5>
