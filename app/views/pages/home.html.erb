@@ -20,6 +20,7 @@
       <h6>Size: <%= missing_animal.size %></h6>
       <h6>Color: <%= missing_animal.color %></h6>
       <h6>Description: <%= missing_animal.description %></h6>
+      <%= image_tag url_for(missing_animal.photo) if missing_animal.photo.attached? %>
     <% end %>
   <% else %>
     <p>No missing mascots to display.</p>
@@ -39,6 +40,7 @@
       <h6>Size: <%= found_animal.size %></h6>
       <h6>Color: <%= found_animal.color %></h6>
       <h6>Description: <%= found_animal.description %></h6>
+      <%= image_tag url_for(found_animal.photo) if found_animal.photo.attached? %>
     <% end %>
   <% end %>
 </div>

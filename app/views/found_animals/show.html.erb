@@ -11,6 +11,7 @@
 <%= @found_animal.color %>
 <%= @found_animal.description %>
 <%= @found_animal.status %>
+<%= image_tag url_for(@found_animal.photo) if @found_animal.photo.attached? %>
 
 <% if @found_animal.user == current_user %>
   <h6><%= link_to "Edit", edit_found_animal_path(@found_animal) %></h6>
