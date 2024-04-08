@@ -5,6 +5,7 @@
 <%= @missing_animal.age %>
 <%= @missing_animal.name %>
 <%= @missing_animal.status %>
+<%= image_tag url_for(@missing_animal.photo) if @missing_animal.photo.attached? %>
 
 <% if @missing_animal.user == current_user %>
   <h6><%= link_to "Edit", edit_missing_animal_path(@missing_animal) %></h6>
