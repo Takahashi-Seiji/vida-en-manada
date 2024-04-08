@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_05_213149) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_08_181532) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -37,6 +37,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_213149) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "found_animals", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "species"
+    t.integer "age"
+    t.string "breed"
+    t.string "found_location"
+    t.date "found_date"
+    t.boolean "sterilized"
+    t.string "size"
+    t.string "color"
+    t.string "sex"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_found_animals_on_user_id"
   end
 
   create_table "missing_animals", force: :cascade do |t|
@@ -77,5 +94,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_213149) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "found_animals", "users"
   add_foreign_key "missing_animals", "users"
 end

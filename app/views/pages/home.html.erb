@@ -1,6 +1,7 @@
 <h1>HOME PAGE</h1>
 
 <h3><%= link_to "Report a missing mascot", new_missing_animal_path %></h3>
+<h3><%= link_to "Found an animal?", new_found_animal_path %></h3>
 <% if current_user %>
   <h1><%= current_user.first_name %></h1>
 <% end %>

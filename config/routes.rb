@@ -14,4 +14,6 @@ Rails.application.routes.draw do
       delete :found
     end
   end
+
+  resources :found_animals
 end
