@@ -12,8 +12,8 @@ class FoundAnimal < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_name_and_species,
-  against: [ :species ],
+  against: [ :species, :breed, :found_location, :color, :description, :sex ],
   using: {
-    tsearch: { prefix: true }
+    tsearch: { prefix: true, normalization: 2 }
   }
 end
