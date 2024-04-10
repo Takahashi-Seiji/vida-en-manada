@@ -9,4 +9,11 @@ class MissingAnimal < ApplicationRecord
   def set_default_status
     self.status ||= :missing
   end
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_species,
+  against: [ :name, :species ],
+  using: {
+    tsearch: { prefix: true }
+  }
 end

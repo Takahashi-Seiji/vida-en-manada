@@ -6,6 +6,11 @@
   <h1><%= current_user.first_name %></h1>
 <% end %>
 
+<%= form_with url: root_path, method: :get do %>
+  <%= text_field_tag :query, params[:query], placeholder: "Search for mascots" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <div class="border p-4">
   <h1>Missing mascots:</h1>
   <% if @missing_animals.present? %>
