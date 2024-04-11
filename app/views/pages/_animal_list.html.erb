@@ -1,0 +1,10 @@
+<div>
+  <h1 class="text-center"><%= title %>:</h1>
+  <% if animals.present? %>
+    <% animals.each do |animal| %>
+      <%= render 'animal', animal: animal, path_method: path_method %>
+    <% end %>
+  <% else %>
+    <p class="text-center">No <%= title.downcase %> to display.</p>
+  <% end %>
+</div>

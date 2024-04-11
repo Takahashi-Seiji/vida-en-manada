@@ -5,6 +5,7 @@
 <%= @missing_animal.age %>
 <%= @missing_animal.name %>
 <%= @missing_animal.status %>
+<%= image_tag url_for(@missing_animal.photo) if @missing_animal.photo.attached? %>
 
 <% if @missing_animal.user == current_user %>
   <h6><%= link_to "Edit", edit_missing_animal_path(@missing_animal) %></h6>
@@ -13,6 +14,15 @@
     <%= f.button :submit, "Has this mascot been reunited with its owner? Click here to update its status to FOUND and continue" %>
   <% end %>
 <% end %>
+
+<div class="container rounded-lg mt-5 mb-5">
+  <iframe
+    class="missing-animal-map"
+    loading="lazy"
+    allowfullscreen
+    src="https://www.google.com/maps/embed/v1/place?key=<%= Rails.application.credentials.dig(:google_maps, :api_key) %>&q=<%= @missing_animal.lost_location %>">
+  </iframe>
+</div>
 
 
 

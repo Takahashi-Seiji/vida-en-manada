@@ -1,0 +1,13 @@
+<div class="border p-3">
+  <h2>Name: <%= link_to (animal.respond_to?(:name) ? animal.name : 'No Name'), send(path_method, animal) %></h2>
+  <h6>Species: <%= animal.species %></h6>
+  <h6>Age: <%= animal.age %></h6>
+  <h6>Breed: <%= animal.breed %></h6>
+  <h6>Location: <%= animal.respond_to?(:lost_location) ? animal.lost_location : animal.found_location %></h6>
+  <h6>Date: <%= animal.respond_to?(:date_lost) ? animal.date_lost : animal.found_date %></h6>
+  <h6>Sterilized: <%= animal.sterilized %></h6>
+  <h6>Size: <%= animal.size %></h6>
+  <h6>Color: <%= animal.color %></h6>
+  <h6>Description: <%= animal.description %></h6>
+  <%= image_tag url_for(animal.photo), size: "200x200" if photo_attached?(animal) %>
+</div>

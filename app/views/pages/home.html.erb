@@ -1,44 +1,21 @@
 <h1>HOME PAGE</h1>
 
-<h3><%= link_to "Report a missing mascot", new_missing_animal_path %></h3>
-<h3><%= link_to "Found an animal?", new_found_animal_path %></h3>
-<% if current_user %>
-  <h1><%= current_user.first_name %></h1>
-<% end %>
-
-<div class="border p-4">
-  <h1>Missing mascots:</h1>
-  <% if @missing_animals.present? %>
-    <% @missing_animals.each do |missing_animal| %>
-      <h2>Name: <%= link_to missing_animal.name, missing_animal_path(missing_animal) %></h2>
-      <h6>Species: <%= missing_animal.species %></h6>
-      <h6>Age: <%= missing_animal.age %></h6>
-      <h6>Breed: <%= missing_animal.breed %></h6>
-      <h6>Lost location: <%= missing_animal.lost_location %></h6>
-      <h6>Date lost: <%= missing_animal.date_lost %></h6>
-      <h6>Sterilized: <%= missing_animal.sterilized %></h6>
-      <h6>Size: <%= missing_animal.size %></h6>
-      <h6>Color: <%= missing_animal.color %></h6>
-      <h6>Description: <%= missing_animal.description %></h6>
+<div class="row p-3 d-flex align-items-center">
+  <h5 class="col-4 text-center"><%= link_to "Report a missing mascot", new_missing_animal_path, class: "missing-button" %></h5>
+  <div class="col-4 text-center">
+    <%= form_with url: root_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], placeholder: "Search for mascots", class: 'search-bar-input' %>
+      <%= submit_tag "Search", class: "search-bar-submit-button" %>
     <% end %>
-  <% else %>
-    <p>No missing mascots to display.</p>
-  <% end %>
+  </div>
+  <h5 class="col-4 text-center"><%= link_to "Found an animal?", new_found_animal_path, class: "missing-button" %></h5>
 </div>
 
-<div class="border p-4">
-  <h1>Found mascots: </h1>
-  <% if @found_animals.present? %>
-    <% @found_animals.each do |found_animal| %>
-      <h2>Species: <%= link_to found_animal.species, found_animal_path(found_animal) %></h2>
-      <h6>Age: <%= found_animal.age %></h6>
-      <h6>Breed: <%= found_animal.breed %></h6>
-      <h6>Found location: <%= found_animal.found_location %></h6>
-      <h6>Date found: <%= found_animal.found_date %></h6>
-      <h6>Sterilized: <%= found_animal.sterilized %></h6>
-      <h6>Size: <%= found_animal.size %></h6>
-      <h6>Color: <%= found_animal.color %></h6>
-      <h6>Description: <%= found_animal.description %></h6>
-    <% end %>
-  <% end %>
+<div class="row">
+  <div class="col-6">
+    <%= render 'animal_list', title: 'Missing mascots', animals: @missing_animals, path_method: :missing_animal_path %>
+  </div>
+  <div class="col-6">
+    <%= render 'animal_list', title: 'Found mascots', animals: @found_animals, path_method: :found_animal_path %>
+  </div>
 </div>
