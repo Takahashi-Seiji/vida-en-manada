@@ -17,9 +17,7 @@
 
 <div class="container rounded-lg mt-5 mb-5">
   <iframe
-    width="100%"
-    height="550"
-    style="border:0"
+    class="missing-animal-map"
     loading="lazy"
     allowfullscreen
     src="https://www.google.com/maps/embed/v1/place?key=<%= Rails.application.credentials.dig(:google_maps, :api_key) %>&q=<%= @missing_animal.lost_location %>">
