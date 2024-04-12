@@ -21,4 +21,13 @@
   <% end %>
 <% end %>
 
+<div class="container rounded-lg mt-5 mb-5">
+  <iframe
+    class="missing-animal-map"
+    loading="lazy"
+    allowfullscreen
+    src="https://www.google.com/maps/embed/v1/place?key=<%= Rails.application.credentials.dig(:google_maps, :api_key) %>&q=<%= @found_animal.found_location %>">
+  </iframe>
+</div>
+
 <h5>Reported by: <%= @user.first_name %></h5>

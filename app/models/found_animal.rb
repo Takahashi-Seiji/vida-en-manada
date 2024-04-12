@@ -1,6 +1,8 @@
 class FoundAnimal < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
+  geocoded_by :found_location
+  after_validation :geocode, if: :will_save_change_to_found_location?
 
   enum status: { missing: 0, found: 1 }
 
