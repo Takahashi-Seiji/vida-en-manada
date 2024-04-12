@@ -14,7 +14,7 @@ class MissingAnimal < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_multiple_attributes,
-  against: [ :name, :species, :breed, :color, :description, :sex, :lost_location ],
+  against: [ :name, :species, :breed, :color, :description, :sex, :lost_location, :size ],
   using: {
     tsearch: { prefix: true, normalization: 2 }
   }
