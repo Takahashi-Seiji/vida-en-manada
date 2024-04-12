@@ -38,6 +38,6 @@ class FoundAnimalsController < ApplicationController
   private
 
   def found_animal_params
-    params.require(:found_animal).permit(:species, :age, :name, :breed, :found_location, :found_date, :sterilized, :size, :color, :description, :photo)
+    params.require(:found_animal).permit(:species, :age, :name, :breed, :found_location, :found_date, :sterilized, :size, :sex, :color, :description, :photo)
   end
 end
