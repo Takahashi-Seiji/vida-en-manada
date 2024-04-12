@@ -10,4 +10,12 @@
   <h6>Color: <%= animal.color %></h6>
   <h6>Description: <%= animal.description %></h6>
   <%= image_tag url_for(animal.photo), size: "200x200" if photo_attached?(animal) %>
+  <div class="container rounded-lg mt-5 mb-5">
+  <iframe
+  class="missing-animal-map"
+  loading="lazy"
+  allowfullscreen
+  src="https://www.google.com/maps/embed/v1/place?key=<%= Rails.application.credentials.dig(:google_maps, :api_key) %>&q=<%= animal.respond_to?(:lost_location) ? animal.lost_location : animal.found_location %>">
+</iframe>
+</div>
 </div>
