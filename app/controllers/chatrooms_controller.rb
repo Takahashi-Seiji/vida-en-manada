@@ -2,9 +2,12 @@ class ChatroomsController < ApplicationController
   def show
     begin
       @chatroom = Chatroom.find(params[:id])
+      authorize @chatroom
       @message = Message.new
     rescue ActiveRecord::RecordNotFound
       redirect_to root_path, alert: 'The chatroom you were looking for could not be found.'
+    rescue Pundit::NotAuthorizedError
+      redirect_to root_path, alert: 'You are not authorized to view this chatroom.'
     end
   end
 

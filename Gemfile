@@ -11,6 +11,9 @@ gem "sassc-rails"
 # Devise
 gem "devise"
 
+# Pundit
+gem "pundit"
+
 # Search
 gem "pg_search"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
