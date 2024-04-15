@@ -21,6 +21,10 @@
   <% end %>
 <% end %>
 
+<% unless @found_animal.user == current_user %>
+  <%= button_to 'Start Chat', start_chat_path(@found_animal.user.id), method: :post %>
+<% end %>
+
 <div class="container rounded-lg mt-5 mb-5">
   <iframe
     class="missing-animal-map"

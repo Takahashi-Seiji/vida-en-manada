@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
   resources :found_animals
 
-  resources :chatrooms, only: :show do
+  resources :chatrooms, only: [:show, :create, :destroy ] do
     resources :messages, only: :create
   end
+
+  post 'start_chat/:user_id', to: 'chatrooms#start_chat', as: 'start_chat'
 end

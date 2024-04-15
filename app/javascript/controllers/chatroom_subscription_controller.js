@@ -12,6 +12,7 @@ export default class extends Controller {
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       {
         received: data => {
+          console.log("Received data from chatroom channel", data);
           this.#insertMessageAndScrollDown(data);
         }
       }
@@ -21,6 +22,7 @@ export default class extends Controller {
 
   #insertMessageAndScrollDown(data) {
     this.messagesTarget.insertAdjacentHTML("beforeend", data)
+    console.log("Scrolled to the bottom of the chatroom", this.messagesTarget.scrollHeight);
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
