@@ -1,7 +1,11 @@
 class ChatroomsController < ApplicationController
   def show
-    @chatroom = Chatroom.find(params[:id])
-    @message = Message.new
+    begin
+      @chatroom = Chatroom.find(params[:id])
+      @message = Message.new
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_path, alert: 'The chatroom you were looking for could not be found.'
+    end
   end
 
   def start_chat
@@ -15,5 +19,11 @@ class ChatroomsController < ApplicationController
     end
 
     redirect_to chatroom_path(@chatroom)
+  end
+
+  def destroy
+    @chatroom = Chatroom.find(params[:id])
+    @chatroom.destroy
+    redirect_to root_path, notice: "Chatroom deleted"
   end
 end

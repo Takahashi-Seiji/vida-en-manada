@@ -2,7 +2,7 @@
   <h1>#<%= @chatroom.name %></h1>
   <%= link_to "Return home", root_path %>
 
-  <div class="messages" data-chatroom-subscription-target="messages">
+  <div class="messages" data-chatroom-subscription-target="messages" style="height: 400px; overflow-y: auto;">
     <% @chatroom.messages.each do |message| %>
       <%= render "message", message: message %>
     <% end %>
@@ -18,3 +18,5 @@
   %>
   <%= f.submit "Send", class: "btn btn-primary mb-3" %>
 <% end %>
+
+<%= link_to 'Delete Chatroom', chatroom_path(@chatroom), data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } %>

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :found_animals
 
-  resources :chatrooms, only: :show do
+  resources :chatrooms, only: [:show, :create, :destroy ] do
     resources :messages, only: :create
   end
 
