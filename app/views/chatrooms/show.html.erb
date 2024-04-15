@@ -1,5 +1,6 @@
 <div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
   <h1>#<%= @chatroom.name %></h1>
+  <%= link_to "Return home", root_path %>
 
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
