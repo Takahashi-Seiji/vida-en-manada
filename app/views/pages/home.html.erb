@@ -1,4 +1,11 @@
 <h1>HOME PAGE</h1>
+<h2><%= current_user.first_name %></h2>
+
+<h2>Active chats:</h2>
+<% current_user.chatrooms.each do |chatroom| %>
+  <% other_user = chatroom.user1 == current_user ? chatroom.user2 : chatroom.user1 %>
+  <%= link_to other_user.first_name, chatroom_path(chatroom) %>
+<% end %> 
 
 <div class="row p-3 d-flex align-items-center">
   <h5 class="col-4 text-center"><%= link_to "Report a missing mascot", new_missing_animal_path, class: "missing-button" %></h5>
