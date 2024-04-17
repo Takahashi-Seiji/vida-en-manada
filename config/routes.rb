@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :chatrooms, only: [:show, :create, :destroy ] do
     member do
       patch :accept
+      patch :decline
     end
     resources :messages, only: :create
   end

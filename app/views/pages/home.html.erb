@@ -8,6 +8,7 @@
     <%= link_to other_user.first_name, chatroom_path(chatroom) %>
   <% elsif chatroom.status == "pending" && chatroom.user2 == current_user %>
     <%= button_to 'Accept Chat', accept_chatroom_path(chatroom), method: :patch %>
+    <%= button_to 'Decline Chat', decline_chatroom_path(chatroom), method: :patch, data: { confirm: 'Are you sure?' } %>
   <% end %>
 <% end %>
 

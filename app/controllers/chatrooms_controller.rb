@@ -35,6 +35,16 @@ class ChatroomsController < ApplicationController
     end
   end
 
+  def decline
+    @chatroom = Chatroom.find(params[:id])
+    if @chatroom.user2_id == current_user.id && @chatroom.pending?
+      @chatroom.destroy
+      redirect_to root_path, notice: 'Chatroom declined'
+    else
+      redirect_to root_path, alert: 'You are not authorized to decline this chatroom.'
+    end
+  end
+
   def destroy
     @chatroom = Chatroom.find(params[:id])
     @chatroom.destroy
