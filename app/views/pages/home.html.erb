@@ -3,8 +3,19 @@
 
 <h2>Active chats:</h2>
 <% current_user.chatrooms.each do |chatroom| %>
+  <% if chatroom.status == "accepted" %>
+    <% other_user = chatroom.user1 == current_user ? chatroom.user2 : chatroom.user1 %>
+    <%= link_to other_user.first_name, chatroom_path(chatroom) %>
+  <% end %>
+<% end %>
+
+<% current_user.chatrooms.each do |chatroom| %>
   <% other_user = chatroom.user1 == current_user ? chatroom.user2 : chatroom.user1 %>
-  <%= link_to other_user.first_name, chatroom_path(chatroom) %>
+  <% if chatroom.status == "accepted" %>
+    <%= link_to other_user.first_name, chatroom_path(chatroom) %>
+  <% elsif chatroom.status == "pending" && chatroom.user2 == current_user %>
+    <%= button_to 'Accept Chat', accept_chatroom_path(chatroom), method: :patch %>
+  <% end %>
 <% end %>
 
 <div class="row p-3 d-flex align-items-center">
