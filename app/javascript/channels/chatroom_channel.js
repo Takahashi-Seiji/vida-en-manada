@@ -1,6 +1,6 @@
 import consumer from "channels/consumer"
 
-consumer.subscriptions.create("ChatroomChannel", {
+consumer.subscriptions.create({ channel: "ChatroomChannel", id: chatroomId }, {
   connected() {
     // Called when the subscription is ready for use on the server
   },

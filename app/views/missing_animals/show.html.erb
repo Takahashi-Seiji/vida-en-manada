@@ -8,7 +8,7 @@
 <%= image_tag url_for(@missing_animal.photo) if @missing_animal.photo.attached? %>
 
 <% unless @missing_animal.user == current_user %>
-  <%= button_to 'Start Chat', start_chat_path(@missing_animal.user.id), method: :post %>
+  <%= button_to 'Start Chat', start_chat_path(user_id: @missing_animal.user.id, missing_animal_id: @missing_animal.id), method: :post %>
 <% end %>
 
 <% if @missing_animal.user == current_user %>

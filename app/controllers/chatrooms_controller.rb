@@ -12,7 +12,8 @@ class ChatroomsController < ApplicationController
   end
 
   def start_chat
-    @chatroom = Chatroom.find_or_create_by(user1_id: current_user.id, user2_id: params[:user_id]) do |chatroom|
+    @missing_animal = MissingAnimal.find(params[:missing_animal_id])
+    @chatroom = Chatroom.find_or_create_by(user1_id: current_user.id, user2_id: params[:user_id], missing_animal: @missing_animal) do |chatroom|
       chatroom.name = SecureRandom.hex(10) # generates a random name
     end
 
