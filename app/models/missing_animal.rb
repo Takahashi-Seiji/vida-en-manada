@@ -1,5 +1,6 @@
 class MissingAnimal < ApplicationRecord
   belongs_to :user
+  has_many :chatrooms, dependent: :destroy
   has_one_attached :photo
   geocoded_by :lost_location
   after_validation :geocode, if: :will_save_change_to_lost_location?
