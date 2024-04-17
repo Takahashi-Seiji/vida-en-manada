@@ -14,6 +14,7 @@ export default class extends Controller {
         received: data => {
           console.log("Received data from chatroom channel", data);
           this.#insertMessageAndScrollDown(data);
+          this.resetForm();
         }
       }
     )
@@ -32,6 +33,7 @@ export default class extends Controller {
   }
 
   resetForm(event) {
-    event.target.reset()
+    console.log("Resetting form");
+    this.formTarget.reset()
   }
 }
