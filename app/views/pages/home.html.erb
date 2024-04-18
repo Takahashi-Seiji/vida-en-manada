@@ -7,6 +7,7 @@
   <% if chatroom.status == "accepted" %>
     <%= link_to other_user.first_name, chatroom_path(chatroom) %>
   <% elsif chatroom.status == "pending" && chatroom.user2 == current_user %>
+    <h2>You got invited to start a chat with: <%= chatroom.user1.first_name %> about your report of <%= chatroom.missing_animal.name %> </h2>
     <%= button_to 'Accept Chat', accept_chatroom_path(chatroom), method: :patch %>
     <%= button_to 'Decline Chat', decline_chatroom_path(chatroom), method: :patch, data: { confirm: 'Are you sure?' } %>
   <% end %>
