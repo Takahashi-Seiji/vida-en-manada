@@ -1,7 +1,13 @@
 .missing-button {
-  color: black;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-align: center;
   text-decoration: none;
-  border: 2px solid gray;
-  border-radius: 15px;
-  padding: 5px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
