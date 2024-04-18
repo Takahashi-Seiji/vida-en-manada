@@ -1,15 +1,18 @@
 <h1>HOME PAGE</h1>
 <h2><%= current_user.first_name %></h2>
 
-<h2>Active chats:</h2>
 <% current_user.chatrooms.each do |chatroom| %>
   <% other_user = chatroom.user1 == current_user ? chatroom.user2 : chatroom.user1 %>
+  <h2>Active chats:</h2>
   <% if chatroom.status == "accepted" %>
     <%= link_to other_user.first_name, chatroom_path(chatroom) %>
   <% elsif chatroom.status == "pending" && chatroom.user2 == current_user %>
-    <h2>You got invited to start a chat with: <%= chatroom.user1.first_name %> about your report of <%= chatroom.missing_animal.name %> </h2>
-    <%= button_to 'Accept Chat', accept_chatroom_path(chatroom), method: :patch %>
-    <%= button_to 'Decline Chat', decline_chatroom_path(chatroom), method: :patch, data: { confirm: 'Are you sure?' } %>
+    <h2>Chat invitations:</h2>
+    <div class='d-flex justify-content-center align-items-center'>
+      <h2 class='mx-3'>You got invited to start a chat with: <%= chatroom.user1.first_name %> about your report of <%= chatroom.missing_animal.name %> </h2>
+      <%= button_to 'Accept Chat', accept_chatroom_path(chatroom), method: :patch, class:"accept-chat-button" %>
+      <%= button_to 'Decline Chat', decline_chatroom_path(chatroom), method: :patch, data: { confirm: 'Are you sure?' }, class:"decline-chat-button" %>
+    </div>
   <% end %>
 <% end %>
 
