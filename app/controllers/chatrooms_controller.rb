@@ -2,6 +2,7 @@ class ChatroomsController < ApplicationController
   def show
     begin
       @chatroom = Chatroom.find(params[:id])
+      @missing_animal = @chatroom.missing_animal
       authorize @chatroom
       @message = Message.new
     rescue ActiveRecord::RecordNotFound
