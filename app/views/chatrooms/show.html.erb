@@ -1,21 +1,21 @@
-<div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h1>#<%= @chatroom.name %></h1>
-  <%= link_to "Return home", root_path %>
+<div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>" data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">  <h1 class="text-center"><%= @missing_animal.name %> chat with <%= @chatroom.user1.first_name %></h1>
+  <%= link_to "Return home", root_path, class:'return-home-btn text-center d-flex justify-content-center w-25 align-items-center' %>
 
-  <div class="messages" data-chatroom-subscription-target="messages" style="height: 400px; overflow-y: auto;">
+  <div class="messages-container" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
-      <%= render "message", message: message %>
-    <% end %>
+      <% message_class = message.user == current_user ? 'message-right' : 'message-left' %>
+      <div class="<%= message_class %>">
+        <%= render "message", message: message %>
+      </div>
+<% end %>
   </div>
 <%= simple_form_for [@chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm", chatroom_subscription_target: "form" }, class: "d-flex" } do |f| %>
   <%= f.input :content,
     label: false,
-    placeholder: "Message ##{@chatroom.name}",
-    wrapper_html: {class: "flex-grow-1"}
+    placeholder: "Message #{@chatroom.user1.first_name}",
+    wrapper_html: {class: "flex-grow-1 mt-5"}
   %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <%= f.submit "Send", class: "chat-send-btn" %>
 <% end %>
+<%= link_to 'Delete Chatroom', chatroom_path(@chatroom), data: {turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:'delete-chatroom-btn' %>
 </div>
-
-
-<%= link_to 'Delete Chatroom', chatroom_path(@chatroom), data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
