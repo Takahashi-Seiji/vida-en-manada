@@ -20,10 +20,16 @@ export default class extends Controller {
           const userId = messageElement ? messageElement.dataset.userId : undefined;
           this.#insertMessageAndScrollDown(userId, data);
           this.resetForm();
+          this.scrollToBottom();
         }
       }
     )
     console.log(`Subscribed to chatroom channel ${this.chatroomIdValue}`);
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    this.messagesTarget.scrollTop = this.messagesTarget.scrollHeight;
   }
 
   #insertMessageAndScrollDown(user_id, message) {
