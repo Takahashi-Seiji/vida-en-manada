@@ -1,9 +1,8 @@
-<h1>Report a missing animal</h1>
-<%= link_to "Return home", root_path %>
+<h1 class='text-center'>Report a missing animal</h1>
 
 <div class="report-missing-animal-form">
   <%= simple_form_for @missing_animal do |f| %>
-    <%= f.input :species %>
+    <%= f.input :species, as: :select, collection: ['Dog', 'Cat', 'Bird', 'Hamster', 'Bunny', 'Other'], include_blank: false %>
     <%= f.input :age %>
     <%= f.input :name %>
     <%= f.input :breed %>
@@ -18,3 +17,5 @@
     <%= f.button :submit %>
   <% end %>
 </div>
+
+<%= link_to "Return home", root_path, class:'return-home-btn-missing-form' %>
