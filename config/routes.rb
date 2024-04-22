@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :found_animals
 
-  resources :chatrooms, only: [:show, :create, :destroy ] do
+  resources :chatrooms, only: [:show, :create, :destroy, :index ] do
     member do
       patch :accept
       patch :decline

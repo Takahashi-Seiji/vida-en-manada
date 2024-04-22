@@ -1,0 +1,6 @@
+<% other_user = chatroom.other_user(current_user) %>
+<div class='border p-4 my-4 chat-invitation'>
+  <h3 class='mx-3 mb-3 invitation-details'>You got invited to start a chat with <%= other_user.first_name %> about your report of <%= chatroom.missing_animal.name %> </h3>
+  <%= button_to 'Accept Chat', accept_chatroom_path(chatroom), method: :patch, class:"btn btn-success accept-chat-button mr-2" %>
+  <%= button_to 'Decline Chat', decline_chatroom_path(chatroom), method: :patch, data: { confirm: 'Are you sure?' }, class:"btn btn-danger decline-chat-button" %>
+</div>
