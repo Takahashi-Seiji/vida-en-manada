@@ -1,0 +1,25 @@
+<h1>CHATROOMS</h1>
+
+<div class="row mb-5">
+  <div class="col-md-6 border p-5 chat-section">
+  <h2 class="mb-4 chat-title">Active chats:</h2>
+  <% @chatrooms.each do |chatroom| %>
+    <% if chatroom.accepted? %>
+      <%= link_to chatroom_path(chatroom) do %>
+        <div class="chatroom-link">
+          <%= render 'chatroom', chatroom: chatroom %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+  </div>
+
+    <div class="col-md-6 border p-5 chat-section">
+      <h2 class="mb-4 chat-title">Chat invitations:</h2>
+      <% @chatrooms.each do |chatroom| %>
+        <% if chatroom.pending? && chatroom.invited?(current_user) %>
+          <%= render 'chat_invitation', chatroom: chatroom %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>

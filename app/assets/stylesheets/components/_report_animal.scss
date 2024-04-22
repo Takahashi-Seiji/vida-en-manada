@@ -1,17 +1,66 @@
-.report-missing-animal-form {
+@keyframes colorFade {
+  0% { background-color: #333333; }
+  100% { background-color: #FFB6C1; } // Light pink color
+}
+
+.report-missing-animal-form, .report-found-animal-form {
   padding: 20px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 10px;
-  background-color: #f9f9f9;
-  width: 50%;
+  background-color: #fff;
+  width: 100%;
   margin: 0 auto;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  transition: background-color 0.5s ease;
+
+  @media (min-width: 768px) {
+    width: 75%;
+  }
+
+  @media (min-width: 1024px) {
+    width: 50%;
+  }
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
 }
 
 .report-found-animal-form {
-  padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 10px;
   background-color: #f9f9f9;
-  width: 50%;
+
+  &:hover {
+    border-color: #999;
+  }
+}
+
+.return-home-btn-missing-form {
+  margin-top: 50px;
+  background-color: transparent;
+  color: #333;
+  border: 2px solid #777777;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  width: 100%;
   margin: 0 auto;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  transition: all 0.5s ease;
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+
+  &:hover {
+    background-color: #ff4545; // Light pink color
+    color: #fff;
+  }
+
+  &:active {
+    transform: scale(1); // Return to original size
+  }
 }

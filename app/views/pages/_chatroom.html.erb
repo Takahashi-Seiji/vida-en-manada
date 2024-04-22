@@ -1,0 +1,6 @@
+<% other_user = chatroom.other_user(current_user) %>
+<% if chatroom.accepted? %>
+  <%= link_to other_user.first_name, chatroom_path(chatroom), class:'active-chat-link btn btn-primary mb-3' %>
+<% elsif chatroom.pending? && chatroom.invited?(current_user) %>
+  <%= render 'chat_invitation', chatroom: chatroom, other_user: other_user %>
+<% end %>

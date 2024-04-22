@@ -1,0 +1,76 @@
+.chatroom-container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.chatroom-link {
+  display: block;
+  color: #075E54;
+  background-color: #DCF8C6;
+  border-color: #DCF8C6;
+  text-decoration: none;
+  padding: .375rem .75rem;
+  margin-bottom: 1rem;
+  border-radius: 7.5px;
+}
+
+.chatroom-messages {
+  margin-bottom: 20px;
+}
+
+.last-message {
+  font-size: 14px;
+  color: #808080;
+}
+
+.message-content {
+  font-weight: bold;
+  color: #202020;
+}
+
+.message-time {
+  font-style: italic;
+  color: #BEBEBE;
+}
+
+.no-messages {
+  font-size: 14px;
+  color: #999;
+}
+
+.chat-invitation {
+  padding: 10px;
+  background-color: #F8F9FA;
+  border: 1px solid #ECE5DD;
+  border-radius: 7.5px;
+}
+
+// Media queries for responsiveness
+@media (max-width: 768px) {
+  .chatroom-container {
+    padding: 10px;
+  }
+
+  .chatroom-link {
+    padding: .375rem .5rem;
+  }
+
+  .chatroom-messages {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chatroom-container {
+    padding: 5px;
+  }
+
+  .chatroom-link {
+    padding: .375rem .25rem;
+  }
+
+  .chatroom-messages {
+    margin-bottom: 5px;
+  }
+}

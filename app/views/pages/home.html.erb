@@ -1,41 +1,31 @@
-<h1>HOME PAGE</h1>
-<h2><%= current_user.first_name %></h2>
+<div class="container py-5">
+  <h1 class="text-center mb-5 home-title">HOME PAGE</h1>
+  <h2 class="text-center mb-5 user-name"><%= current_user.first_name %></h2>
 
-<div class="row">
-  <div class="col-6 border p-3">
-    <h2>Active chats:</h2>
-    <% current_user.chatrooms.each do |chatroom| %>
-      <% other_user = chatroom.user1 == current_user ? chatroom.user2 : chatroom.user1 %>
-      <% if chatroom.status == "accepted" %>
-        <%= link_to other_user.first_name, chatroom_path(chatroom), class:'active-chat-link' %>
+  <div class="row p-3 d-flex align-items-center mt-5 action-section">
+    <div class="col-md-4 text-center mb-4">
+      <%= link_to "Report a missing mascot", new_missing_animal_path, class: "btn btn-warning missing-button" %>
+    </div>
+    <div class="col-md-4 text-center mb-4">
+      <%= form_with url: root_path, method: :get, class: 'form-inline justify-content-center' do %>
+        <%= text_field_tag :query, params[:query], placeholder: "Search for mascots", class: 'form-control search-bar-input' %>
+      <% end %>
+    </div>
+    <div class="col-md-4 text-center mb-4">
+      <%= link_to "Found an animal?", new_found_animal_path, class: "btn btn-success missing-button" %>
+    </div>
   </div>
-    <% elsif chatroom.status == "pending" && chatroom.user2 == current_user %>
-      <div class='col-6 border p-3'>
-        <h2>Chat invitations:</h2>
-        <h2 class='mx-3'>You got invited to start a chat with <%= chatroom.user1.first_name %> about your report of <%= chatroom.missing_animal.name %> </h2>
-        <%= button_to 'Accept Chat', accept_chatroom_path(chatroom), method: :patch, class:"accept-chat-button" %>
-        <%= button_to 'Decline Chat', decline_chatroom_path(chatroom), method: :patch, data: { confirm: 'Are you sure?' }, class:"decline-chat-button" %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
 
-<div class="row p-3 d-flex align-items-center mt-5">
-  <h5 class="col-4 text-center"><%= link_to "Report a missing mascot", new_missing_animal_path, class: "missing-button" %></h5>
-  <div class="col-4 text-center">
-    <%= form_with url: root_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], placeholder: "Search for mascots", class: 'search-bar-input' %>
-      <%= submit_tag "Search", class: "search-bar-submit-button" %>
-    <% end %>
-  </div>
-  <h5 class="col-4 text-center"><%= link_to "Found an animal?", new_found_animal_path, class: "missing-button" %></h5>
-</div>
-
-<div class="row">
-  <div class="col-6">
-    <%= render 'animal_list', title: 'Missing mascots', animals: @missing_animals, path_method: :missing_animal_path %>
-  </div>
-  <div class="col-6">
-    <%= render 'animal_list', title: 'Found mascots', animals: @found_animals, path_method: :found_animal_path %>
+  <div class="row animal-list-section">
+    <div class="col-md-6 mb-5">
+      <% cache 'missing_animals' do %>
+        <%= render 'animal_list', title: 'Missing mascots', animals: @missing_animals, path_method: :missing_animal_path %>
+      <% end %>
+    </div>
+    <div class="col-md-6 mb-5">
+      <% cache 'found_animals' do %>
+        <%= render 'animal_list', title: 'Found mascots', animals: @found_animals, path_method: :found_animal_path %>
+      <% end %>
+    </div>
   </div>
 </div>
