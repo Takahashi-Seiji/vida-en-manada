@@ -7,15 +7,15 @@
       <div class="<%= message_class %>">
         <%= render "message", message: message %>
       </div>
-<% end %>
+    <% end %>
   </div>
-<%= simple_form_for [@chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm", chatroom_subscription_target: "form" }, class: "d-flex" } do |f| %>
-  <%= f.input :content,
-    label: false,
-    placeholder: "Message #{@chatroom.user1.first_name}",
-    wrapper_html: {class: "flex-grow-1 mt-5"}
-  %>
-  <%= f.submit "Send", class: "chat-send-btn" %>
-<% end %>
+  <%= simple_form_for [@chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm", chatroom_subscription_target: "form" }, class: "d-flex" } do |f| %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "Message #{@chatroom.user1.first_name}",
+      wrapper_html: {class: "flex-grow-1 mt-5"}
+    %>
+    <%= f.submit "Send", class: "chat-send-btn" %>
+  <% end %>
 <%= link_to 'Delete Chatroom', chatroom_path(@chatroom), data: {turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:'delete-chatroom-btn' %>
 </div>
