@@ -1,76 +1,71 @@
 .chatroom-container {
-  width: 100%;
   padding: 20px;
-  box-sizing: border-box;
+  background-color: #f8f9fa;
+  border-radius: 10px;
 }
 
-.chatroom-link {
-  display: block;
-  color: #075E54;
-  background-color: #DCF8C6;
-  border-color: #DCF8C6;
-  text-decoration: none;
-  padding: .375rem .75rem;
-  margin-bottom: 1rem;
-  border-radius: 7.5px;
-}
-
-.chatroom-messages {
+.chatroom-header {
+  font-size: 2em;
+  color: #333;
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.last-message {
-  font-size: 14px;
-  color: #808080;
+.chatroom-row {
+  margin: 20px 0;
 }
 
-.message-content {
-  font-weight: bold;
-  color: #202020;
-}
-
-.message-time {
-  font-style: italic;
-  color: #BEBEBE;
-}
-
-.no-messages {
-  font-size: 14px;
-  color: #999;
-}
-
-.chat-invitation {
+.chatroom-col {
   padding: 10px;
-  background-color: #F8F9FA;
-  border: 1px solid #ECE5DD;
-  border-radius: 7.5px;
 }
 
-// Media queries for responsiveness
-@media (max-width: 768px) {
-  .chatroom-container {
-    padding: 10px;
-  }
+.chatroom-title {
+  font-size: 1.5em;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-  .chatroom-link {
-    padding: .375rem .5rem;
-  }
+.chatroom-card {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease-in-out;
 
-  .chatroom-messages {
-    margin-bottom: 10px;
+  &:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   }
 }
 
-@media (max-width: 480px) {
-  .chatroom-container {
-    padding: 5px;
+.chatroom-card-body {
+  padding: 20px;
+}
+
+.chatroom-link {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    color: #007bff;
+    transform: scale(1.05);
   }
 
-  .chatroom-link {
-    padding: .375rem .25rem;
+  &:active {
+    color: #0056b3;
+    transform: scale(0.95);
   }
 
-  .chatroom-messages {
-    margin-bottom: 5px;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #007bff;
+  }
+}
+
+.chatroom-invitation {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  transition: border 0.3s ease-in-out;
+
+  &:hover {
+    border: 1px solid #007bff;
   }
 }

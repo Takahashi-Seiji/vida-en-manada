@@ -2,7 +2,7 @@
 <div class="chatroom-container">
   <% if chatroom.accepted? %>
     <div class="chatroom-link">
-      <%= link_to other_user.first_name, chatroom_path(chatroom), class:'active-chat-link btn btn-primary mb-3' %>
+      <%= other_user.first_name %>
     </div>
     <div class="chatroom-messages">
       <% last_message = chatroom.messages.last %>
