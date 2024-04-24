@@ -9,6 +9,24 @@
     width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 20px;
+    height: 200px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1faee;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #a8dadc;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
 
     @media (min-width: 768px) {
       width: 48%;

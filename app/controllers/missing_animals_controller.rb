@@ -8,6 +8,7 @@ class MissingAnimalsController < ApplicationController
     @missing_animal.user = current_user
 
     if @missing_animal.save
+      Rails.cache.delete('missing_animals')
       redirect_to missing_animal_path(@missing_animal)
     end
   end
