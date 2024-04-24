@@ -1,7 +1,7 @@
 <div id="message-<%= message.id %>" class="message" data-user-id="<%= message.user.id %>">
   <small>
     <span class="message-user"><strong><%= message.user.first_name %></strong></span>
-    <span class="message-timestamp"><i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i></span>
+    <span class="message-timestamp"><i><%= message.created_at.in_time_zone('Mexico City').strftime('%A, %Y-%m-%d %H:%M:%S') %></i></span>
   </small>
   <p class="message-content"><%= message.content %></p>
 </div>

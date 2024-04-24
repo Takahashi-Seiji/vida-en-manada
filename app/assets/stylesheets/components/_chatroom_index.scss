@@ -1,71 +1,119 @@
+.row {
+  margin: 0 auto;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .col-6 {
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px;
+
+    @media (min-width: 768px) {
+      width: 48%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .chatroom_link {
+      text-decoration: none;
+      color: #007bff;
+
+      &:hover {
+        color: #0056b3;
+      }
+    }
+  }
+}
+
 .chatroom-container {
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-}
-
-.chatroom-header {
-  font-size: 2em;
-  color: #333;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.chatroom-row {
-  margin: 20px 0;
-}
-
-.chatroom-col {
-  padding: 10px;
-}
-
-.chatroom-title {
-  font-size: 1.5em;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.chatroom-card {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  transition: box-shadow 0.3s ease-in-out;
-
-  &:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  }
-}
-
-.chatroom-card-body {
-  padding: 20px;
-}
-
-.chatroom-link {
-  color: #333;
-  text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease;
-
-  &:hover {
-    color: #007bff;
-    transform: scale(1.05);
-  }
-
-  &:active {
-    color: #0056b3;
-    transform: scale(0.95);
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #007bff;
-  }
-}
-
-.chatroom-invitation {
-  background-color: #f8f9fa;
   border: 1px solid #ddd;
-  transition: border 0.3s ease-in-out;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
 
-  &:hover {
-    border: 1px solid #007bff;
+  .user-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .last-message {
+    font-size: 0.9em;
+    color: #666;
+
+    .message-content {
+      color: #333;
+    }
+
+    .message-time {
+      color: #999;
+    }
+  }
+
+  .chat-invitation {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+  }
+}
+
+
+.invitation-container {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+
+  .invitation-text {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .invitation-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+
+    .accept-button, .decline-button {
+      background-color: transparent;
+      border-radius: 15px;
+      color: black;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      width: 100%; // set a specific width for the buttons
+      padding: 10px;
+
+      &:hover {
+        background-color: #00ff0d;
+      }
+    }
+
+    .accept-button {
+      border: 1px solid greenyellow;
+
+      &:hover {
+        background-color: #00ff0d;
+      }
+    }
+
+    .decline-button {
+      border: 1px solid #da190b;
+
+      &:hover {
+        background-color: #ff1100;
+      }
+    }
   }
 }

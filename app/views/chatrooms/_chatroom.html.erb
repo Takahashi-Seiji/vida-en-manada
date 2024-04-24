@@ -1,15 +1,15 @@
 <% other_user = chatroom.other_user(current_user) %>
 <div class="chatroom-container">
   <% if chatroom.accepted? %>
-    <div class="chatroom-link">
+    <div class="user-name">
       <%= other_user.first_name %>
     </div>
-    <div class="chatroom-messages">
+    <div class="last-message">
       <% last_message = chatroom.messages.last %>
       <% if last_message %>
-        <p class="last-message">Last message: <span class="message-content"><%= last_message.content %></span> at <span class="message-time"><%= last_message.created_at %></span></p>
+        <p>Last message: <span class="message-content"><%= last_message.content %></span> at <span class="message-time"><%= last_message.created_at.in_time_zone('Mexico City').strftime('%A, %Y-%m-%d %H:%M:%S') %></span></p>
       <% else %>
-        <p class="no-messages">No messages yet.</p>
+        <p>No messages yet.</p>
       <% end %>
     </div>
   <% elsif chatroom.pending? && chatroom.invited?(current_user) %>
